@@ -1,0 +1,10 @@
+[
+  {"name": "Aarav", "age": 19, "city": "Delhi"},
+  {"name": "Diya", "age": 24, "city": "Mumbai"},
+  {"name": "Kabir", "age": 22, "city": "Pune"},
+  {"name": "Meera", "age": 28, "city": "Bengaluru"},
+  {"name": "Riya", "age": 21, "city": "Chennai"},
+  {"name": "Arjun", "age": 26, "city": "Delhi"},
+  {"name": "Sara", "age": 20, "city": "Mumbai"},
+  {"name": "Vihaan", "age": 31, "city": "Pune"}
+]

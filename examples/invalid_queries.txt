@@ -1,0 +1,3 @@
+SELECT name "students.csv"
+SELECT name, salary FROM "students.csv"
+SELECT name FROM "students.csv" WHERE age > "hello"

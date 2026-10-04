@@ -1,0 +1,3 @@
+SELECT name, age FROM "students.csv" WHERE age > 20 ORDER BY age DESC LIMIT 5
+SELECT name FROM "students.json" WHERE city = "Delhi" ORDER BY name ASC
+SELECT * FROM "students.csv" WHERE age >= 20 AND city != "Mumbai"
