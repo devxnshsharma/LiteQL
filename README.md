@@ -1,19 +1,17 @@
-# LiteQL — A Small SQL-Like Compiler for CSV and JSON Files
+# LiteQL: A Small SQL-Like Compiler for CSV and JSON Files
 
-<<<<<<< Updated upstream
-LiteQL is a small SQL-like compiler for querying one CSV or JSON file. It is a Compiler Design mini-project for BCSE307L by Shivaansh Aggarwal and Devansh Sharma under Dr. Banupriya R. It deliberately demonstrates compilation stages instead of trying to be a database system.
-=======
-**BCSE307L Compiler Design mini-project** · Shivaansh Aggarwal, Devansh Sharma · Faculty: Dr. R Banupriya
->>>>>>> Stashed changes
+**BCSE307L Compiler Design mini-project**  
+* **Authors:** Shivaansh Aggarwal, Devansh Sharma  
+* **Faculty:** Dr. R Banupriya  
 
-LiteQL treats a query as *source code*. Instead of running the text straight away, it
-tokenizes it, parses it, checks it against the real data file, builds an intermediate
-plan, optimizes the plan, and only then executes it. An invalid query fails **before** any
-data row is read.
+LiteQL is a small SQL-like compiler for querying one CSV or JSON file. It is a Compiler Design mini-project that deliberately demonstrates compilation stages instead of trying to be a database system.
+
+LiteQL treats a query as *source code*. Instead of running the text straight away, it tokenizes it, parses it, checks it against the real data file, builds an intermediate plan, optimizes the plan, and only then executes it. An invalid query fails **before** any data row is read.
+
+
 
 ```
-Query text → Lexer → Tokens → Parser → AST → Semantic analysis (symbol table + type check)
-           → Logical plan (IR) → Optimizer → Optimized plan → Executor → Result
+Query text → Lexer → Tokens → Parser → AST → Semantic analysis (symbol table + type check) → Logical plan (IR) → Optimizer → Optimized plan → Executor → Result
 ```
 
 LiteQL is **not** a database and does not claim to be faster than one. It demonstrates how
@@ -22,11 +20,21 @@ classical compiler phases apply to a small, realistic problem.
 ---
 
 ## Contents
-1. [Problem](#1-problem) · 2. [Objectives](#2-objectives) · 3. [Scope](#3-scope) · 4. [Architecture](#4-architecture) ·
-5. [Grammar](#5-grammar) · 6. [Compiler phases](#6-compiler-phases) · 7. [Install](#7-install) · 8. [Run](#8-run) ·
-9. [Tests](#9-tests) · 10. [Demo](#10-demo-commands) · 11. [Example queries](#11-example-queries) ·
-12. [Design decisions](#12-design-decisions-and-assumptions) · 13. [Limitations](#13-limitations) ·
-14. [Future extensions](#14-future-extensions) · 15. [Literature context](#15-literature-context)
+1. [Problem](#1-problem)
+2. [Objectives](#2-objectives)
+3. [Scope](#3-scope)
+4. [Architecture](#4-architecture) 
+5. [Grammar](#5-grammar)
+6. [Compiler phases](#6-compiler-phases)
+7. [Install](#7-install) 
+8. [Run](#8-run) 
+9. [Tests](#9-tests)
+10. [Demo](#10-demo-commands)
+11. [Example queries](#11-example-queries) 
+12. [Design decisions](#12-design-decisions-and-assumptions)
+13. [Limitations](#13-limitations) 
+14. [Future extensions](#14-future-extensions)
+15. [Literature context](#15-literature-context)
 
 ---
 
