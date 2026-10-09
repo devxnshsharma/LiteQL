@@ -1,3 +1,36 @@
-SELECT name "students.csv"
-SELECT name, salary FROM "students.csv"
-SELECT name FROM "students.csv" WHERE age > "hello"
+# Invalid LiteQL queries. Format:  <phase that must reject it> | <query>
+# Every one of these fails BEFORE any data row is read.
+
+# --- Lexical errors: the lexer cannot form a token ---
+Lexical | SELECT name @ FROM "students.csv"
+Lexical | SELECT name FROM "students.csv" WHERE city = 'Delhi
+Lexical | SELECT name FROM "students.csv" WHERE age > 20abc
+Lexical | SELECT COUNT(*) FROM "students.csv"
+
+# --- Syntax errors: the tokens are in the wrong order ---
+Syntax | SELECT name "students.csv"
+Syntax | SELECT name, age "students.csv"
+Syntax | FROM "students.csv" SELECT name
+Syntax | SELECT name WHERE age > 20
+Syntax | SELECT name FROM "students.csv" LIMIT
+Syntax | SELECT name FROM "students.csv" WHERE age
+Syntax | SELECT name FROM "students.csv" WHERE age >
+Syntax | SELECT name FROM "students.csv" LIMIT 5 ORDER BY age
+Syntax | SELECT name FROM "students.csv" JOIN other
+Syntax | SELECT name FROM students
+
+# --- Semantic errors: grammatical, but wrong for this file ---
+Semantic | SELECT name, salary FROM "students.csv"
+Semantic | SELECT name FROM "students.csv" WHERE salary > 100
+Semantic | SELECT name FROM "students.csv" ORDER BY salary
+Semantic | SELECT name FROM "students.csv" LIMIT -1
+Semantic | SELECT name FROM "students.csv" WHERE city = Delhi
+
+# --- Type errors: incompatible comparison ---
+Type | SELECT name FROM "students.csv" WHERE age > "hello"
+Type | SELECT name FROM "students.csv" WHERE city = 20
+Type | SELECT name FROM "students.csv" WHERE age = city
+
+# --- Execution errors: the file itself cannot be used ---
+Execution | SELECT name FROM "missing.csv"
+Execution | SELECT name FROM "notes.txt"

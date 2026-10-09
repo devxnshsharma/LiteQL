@@ -4,9 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "liteql"
-version = "0.1.0"
-description = "A small SQL-like compiler for CSV and JSON files"
-requires-python = ">=3.10"
+version = "0.2.0"
+description = "A small SQL-like compiler for CSV and JSON files (BCSE307L Compiler Design mini-project)"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Shivaansh Aggarwal" }, { name = "Devansh Sharma" }]
+
+[project.scripts]
+liteql = "liteql.cli:main"
+
+[tool.setuptools]
+packages = ["liteql"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]

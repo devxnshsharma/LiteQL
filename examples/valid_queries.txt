@@ -1,3 +1,40 @@
+# Valid LiteQL queries. Lines starting with # are comments.
+# Run any of them with:
+#   python -m liteql.cli --query '<query>' --all
+# (the FROM file is also looked up in the examples/ folder)
+
+# --- main example from the report ---
 SELECT name, age FROM "students.csv" WHERE age > 20 ORDER BY age DESC LIMIT 5
-SELECT name FROM "students.json" WHERE city = "Delhi" ORDER BY name ASC
+
+# --- basics ---
+SELECT name FROM "students.csv"
+SELECT * FROM "students.csv"
+SELECT name, city FROM students.csv
+SELECT name FROM "students.csv" LIMIT 3
+
+# --- WHERE with each operator, AND, OR ---
+SELECT name FROM "students.csv" WHERE age = 22
+SELECT name FROM "students.csv" WHERE age != 22
+SELECT name FROM "students.csv" WHERE age >= 24
+SELECT name FROM "students.csv" WHERE age < 21
+SELECT name FROM "students.csv" WHERE age <= 21
 SELECT * FROM "students.csv" WHERE age >= 20 AND city != "Mumbai"
+SELECT name FROM "students.csv" WHERE city = "Delhi" OR city = 'Pune'
+SELECT name FROM "students.csv" WHERE age < 20 OR age > 25 AND city = "Pune"
+SELECT name FROM "students.csv" WHERE city = name
+
+# --- ORDER BY (the column does not have to be selected) ---
+SELECT name FROM "students.csv" ORDER BY age
+SELECT name FROM "students.csv" ORDER BY age DESC LIMIT 2
+SELECT name, age FROM "students.csv" ORDER BY name ASC
+
+# --- JSON file ---
+SELECT name FROM "students.json" WHERE age >= 28 ORDER BY age ASC
+SELECT * FROM "students.json" WHERE city = "Delhi"
+
+# --- messy data: blank ages, quoted commas in names (synthetic Titanic-style sample) ---
+SELECT * FROM titanic.csv WHERE age > 20 AND sex = 'male' order by age desc limit 10
+SELECT Name, Age, Fare FROM titanic.csv WHERE Pclass = 1 ORDER BY Fare DESC LIMIT 5
+SELECT Name FROM titanic.csv WHERE Survived = 1 AND Sex = 'female' AND Age < 30
+SELECT Name, Age FROM titanic.csv ORDER BY Age DESC LIMIT 10
+SELECT Name FROM titanic.csv WHERE SibSp > Parch;

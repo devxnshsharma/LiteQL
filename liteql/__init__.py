@@ -1,5 +1,9 @@
-"""LiteQL: a transparent compiler pipeline for small file queries."""
+"""LiteQL: a small SQL-like compiler for CSV and JSON files.
 
-from .compiler import compile_query
+Pipeline: query text -> lexer -> parser -> semantic analysis -> logical plan
+-> optimizer -> executor. See README.md and docs/architecture.md.
+"""
 
-__all__ = ["compile_query"]
+from .compiler import Compilation, compile_query, run_query
+
+__all__ = ["Compilation", "compile_query", "run_query"]
