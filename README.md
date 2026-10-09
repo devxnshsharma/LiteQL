@@ -1,7 +1,7 @@
-# LiteQL: A Small SQL-Like Compiler for CSV and JSON Files
+# LiteQL: Small SQL-Like Compiler for CSV and JSON Files
 
 **BCSE307L Compiler Design mini-project**  
-* **Authors:** Shivaansh Aggarwal, Devansh Sharma  
+* **Authors:** Devansh Sharma, Shivaansh Aggarwal
 * **Faculty:** Dr. R Banupriya  
 
 LiteQL is a small SQL-like compiler for querying one CSV or JSON file. It is a Compiler Design mini-project that deliberately demonstrates compilation stages instead of trying to be a database system.
